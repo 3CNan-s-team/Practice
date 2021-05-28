@@ -30,3 +30,14 @@ function searchchange() {
 		searchObj.action = "https://www.sogou.com/web"
 	}
 }
+function lengthen() {
+	var gamelistObj = document.getElementById("gamelist");
+	var dis = document.documentElement.scrollTop;
+	var top = 157 - dis;
+	if(dis > 157) {
+		top = 0;
+		gamelistObj.style.top = "0px";
+	} else if(dis < 157) {
+		gamelistObj.style.top = top + "px";
+	}
+}
