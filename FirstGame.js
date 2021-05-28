@@ -35,7 +35,6 @@ function lengthen() {
 	var dis = document.documentElement.scrollTop;
 	var top = 157 - dis;
 	if(dis > 157) {
-		top = 0;
 		gamelistObj.style.top = "0px";
 	} else if(dis < 157) {
 		gamelistObj.style.top = top + "px";
