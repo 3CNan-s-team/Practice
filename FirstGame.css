@@ -6,21 +6,75 @@ html {
 }
 body {
 	background-color: white;
-	margin: 0 150px;
+	margin: 0 150px auto;
 }
 h1 {
 	margin: 0;
+	font-size: 45px;
+	padding: 10px;
 }
-#menu {
-
-}
-#menu a {
+a {
 	text-decoration: none;
 	color: black;
-/*	width: 120px;
-	height: 35px;*/
-	padding: 10px 0;
-	/*text-align: center;*/
-	display: block;
+}
+#menu {
+	background-color: whitesmoke;
+	width: 100%;
+	float: left;
+}
+#menu * {
+	float: left;
+}
+#menu a, #menu p {
+	padding: 20px 25px;
+	margin: 0;
 	font-size: 25px;
+}
+#menu p {
+	display: inline;
+}
+#menu a:hover {
+	color: white;
+	background-color: gray;
+}
+#search input, #search select {
+	position: relative;
+	left: 60%;
+	top: 15px;
+}
+#search * {
+	font-size: 20px;
+	border-radius: 0;
+	margin: 0;
+}
+#searchOps {
+	width: 100px;
+	height: 45px;
+	border: 1px solid rgb(181, 181, 181);
+	border-right: none;
+}
+#searchBtn {
+	width: 100px;
+	height: 45px;
+	color: white;
+	background: darkmagenta;
+	border: none;
+}
+#searchText {
+	width: 240px;
+	height: 41px;
+	border: 1px solid rgb(181, 181, 181);
+}
+#gamelist {
+	position: sticky;
+	bottom: 0;
+	top: 157px;
+	width: 25%;
+	height: calc(100vh);
+	float: left;
+	overflow: scroll;
+	background-color: gray;
+}
+#gamelist * {
+	margin: 0;
 }
