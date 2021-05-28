@@ -3,24 +3,38 @@
 <head>
 	<meta charset="utf-8">
 	<title>First-Game</title>
-	<link rel="stylesheet" type="text/css" href="./First game.css">
-	<script type="text/javascript" src="./First game.js"></script>
+	<link rel="stylesheet" type="text/css" href="./FirstGame.css">
+	<script type="text/javascript" src="./FirstGame.js"></script>
 </head>
-<body>
-	<h1>First-Game</h1>
+<body onscroll="lengthen()">
+	<h1><a href="#">First-Game</a></h1>
 	<div id="menu">
 		<a href="#">My Games</a>
+		<p>|</p>
 		<a href="http://www.4399.com">Other games</a>
+		<form method="GET" target="_blank" id="search" action="http://www.google.com/search">
+			<select id="searchOps" onchange="searchchange()">
+				<option>Google</option>
+				<option>Baidu</option>
+				<option>Bing</option>
+				<option>360</option>
+				<option>Sogou</option>
+			</select>
+			<input type="text" name="q" id="searchText">
+			<input type="submit" value="Google" id="searchBtn">
+		</form>
 	</div>
 
+	<div id="gamelist">
+		<p>a</p>
+		<p>a</p>
+		<p>a</p>
+		<p>a</p>
+		<p>a</p>
+		<p>a</p>
+		<p>a</p>
+	</div>
 	
-	<p>a</p>
-	<p>a</p>
-	<p>a</p>
-	<p>a</p>
-	<p>a</p>
-	<p>a</p>
-	<p>a</p>
-	<p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p>
+	<p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p>
 </body>
 </html>
