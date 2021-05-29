@@ -6,7 +6,9 @@ html {
 }
 body {
 	background-color: white;
-	margin: 0 150px auto;
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 40px 40px 40px;
 }
 h1 {
 	margin: 0;
@@ -39,13 +41,17 @@ a {
 }
 #search input, #search select {
 	position: relative;
-	left: 60%;
+	right: 5%;
 	top: 15px;
+}
+#search {
+	float: right;
 }
 #search * {
 	font-size: 20px;
 	border-radius: 0;
 	margin: 0;
+	float: left;
 }
 #searchOps {
 	width: 100px;
@@ -65,16 +71,65 @@ a {
 	height: 41px;
 	border: 1px solid rgb(181, 181, 181);
 }
-#gamelist {
-	position: sticky;
-	bottom: 0;
-	top: 157px;
-	width: 25%;
-	height: calc(100vh);
+#content {
+	width: 100%;
 	float: left;
+}
+#gamelist {
+	position: fixed;
+	width: calc(25% - 60px);
+	height: calc(100vh);
 	overflow: auto;
-	background-color: gray;
+	background-color: lightgray;
+	font-size: 20px;
+	float: left;
 }
-#gamelist * {
-	margin: 0;
+#gamearea {
+	width: 75%;
+	float: right;
 }
+#blankarea {
+	padding: 500px;
+}
+.TBbutton {
+	display: none;
+	position: fixed;
+	background-color: whitesmoke;
+    right: 100px; 
+    z-index: 1000; 
+    border: none;
+    outline: none; 
+    cursor: pointer; 
+    padding: 15px; 
+    font-size: 20px;
+}
+#topBtn {
+	bottom: 130px; 
+}
+#bottomBtn {
+	bottom: 50px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
