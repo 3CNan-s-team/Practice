@@ -165,10 +165,17 @@ a {
 	background-color: whitesmoke;
 	height: 70px;
 }
-#speedtext {
+.taskbar1 p {
 	line-height: 70px;
 	font-size: 25px;
 	margin: 0;
+	display: inline;
+}
+#speedtext {
+	text-align: left;
+}
+#scoretext {
+	float: right;
 }
 .funckeyBtn {
 	height: 100%;
@@ -201,6 +208,7 @@ a {
 	height: 150px;
 	background-color: red;
 	z-index: 200;
+	float: left;
 }
 #abcgame #abc_object2 {
 	position: absolute;
@@ -212,7 +220,7 @@ a {
 #randomlocscore {
 	font-size: 30px;
 	position: absolute;
-	color: white;
+	display: none;
 	background-color: lightgoldenrodyellow;
 }
 
