@@ -4,9 +4,9 @@
 	<meta charset="utf-8">
 	<title>First-Game</title>
 	<link rel="stylesheet" type="text/css" href="./FirstGame.css">
-	<script type="text/javascript" src="./FirstGame.js"></script>
+	
 </head>
-<body onscroll="showchange()">
+<body onscroll="show();lengthen()">
 	<h1><a href="#">First-Game</a></h1>
 	<div id="menu">
 		<a href="#">My Games</a>
@@ -25,28 +25,51 @@
 		</form>
 	</div>
 	<div>
-		<button onclick="totop()" id="topBtn" class="TBbutton">Back to top</button>
-		<button onclick="tobottom()" id="bottomBtn" class="TBbutton">Go to bottom</button>
+		<button onclick="totop()" id="topBtn" class="TBbutton">TOP</button>
+		<button onclick="tobottom()" id="bottomBtn" class="TBbutton">BOTTOM</button>
 	</div>
 	<div id="content">
 		<div id="gamelist">
-			<p>Avoid Bloody Mouth</p>
+			<p>Avoid Being Caught</p>
 			<p>Five in a Row</p>
-			<p>a</p>
+			<p>Lottery machine</p>
 			<p>a</p>
 			<p>a</p>
 			<p>a</p>
 			<p>a</p>
 		</div>
-		<div id="gamearea">
-			<div>
-				<div>
+		<div class="gamearea">
+			<div class="gamedesciption">
+				<p class="descriptions">
+					Desciption of Avoid Bloody Mouth
+					<button class="expandBtn" onclick="descriptionopen()">Show details</button>
+				</p>
+				<p class="desdetails">The big bloody mouth wants to eat you, please use <span id="udlrImg"></span> to escape death!</p>
 			</div>
-			<div>
-				
+			<div class="gamescreen">
+				<div class="taskbar1">
+					<p id="speedtext">Current Speed: Level 0</p>
+				</div>
+				<div id="abcgame" class="gameself">
+					<div id="abc_object1"></div>
+					<div id="abc_object2"></div>
+					<p id="randomlocscore">+100</p>
+				</div>
+				<div class="taskbar2">
+					<button id="abcstartBtn" class="funckeyBtn" onclick="abc_timestart(); abc_start()">Start</button>
+					<button id="abcrestartBtn" class="funckeyBtn" onclick="abc_restart()">Restart</button>
+					<div id="abctimer">
+						<span id="abcMin">00</span>
+						<span>:</span>
+						<span id="abcSec">00</span>
+						<span>:</span>
+						<span id="abcMsec">00</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div id="blankarea"></div>
+	<script type="text/javascript" src="./FirstGame.js"></script>
 </body>
 </html>
