@@ -71,6 +71,7 @@ a {
 	height: 41px;
 	border: 1px solid rgb(181, 181, 181);
 }
+
 #content {
 	width: 100%;
 	float: left;
@@ -84,18 +85,20 @@ a {
 	font-size: 20px;
 	float: left;
 }
-#gamearea {
-	width: 75%;
+.gamearea {
+	width: calc(75% - 20px);
 	float: right;
+	margin-right: 20px;
 }
 #blankarea {
 	padding: 500px;
 }
+
 .TBbutton {
 	display: none;
 	position: fixed;
 	background-color: whitesmoke;
-    right: 100px; 
+    right: 10px; 
     z-index: 1000; 
     border: none;
     outline: none; 
@@ -109,6 +112,115 @@ a {
 #bottomBtn {
 	bottom: 50px; 
 }
+
+.gamedesciption, .gamescreen {
+	width: 100%;
+	margin-top: 12px;
+	margin-left: 16px;
+	border-radius: 12px;
+	box-shadow: 0 0 6px 0 rgba(0,0,0,0.20);
+}
+.gamescreen {
+	height: 700px;
+	background-color: #317ef3;
+	overflow: hidden;
+}
+.descriptions {
+	line-height: 35px;
+	font-size: 23px;
+	margin: 0;
+	background-color: blanchedalmond;
+	padding: 10px;
+	border-radius: 12px;
+}
+.desdetails {
+	box-shadow: 0 0 6px 0 rgba(0,0,0,0.20);
+	text-indent: 2em;
+	height: 20px;
+	padding: 20px;
+	margin: 0;
+	border-radius: 0 0 12px 12px;
+	display: none;
+}
+.expandBtn {
+	float: right;
+	position: relative;
+	background-color: white;
+	font-family: monospace;
+	top: -10px;
+	right: -10px;
+	height: 55px;
+	padding: 9px;
+	border-radius: 0 12px 12px 0;
+}
+#udlrImg {
+	background: url(http://www.4399.com/images/p2016/icon-keyboard.png);
+	background-position: 0 -626px;
+	width: 53px;
+	height: 32px;
+	display: inline-block;
+    vertical-align: middle;
+}
+.taskbar1, .taskbar2 {
+	background-color: whitesmoke;
+	height: 70px;
+}
+#speedtext {
+	line-height: 70px;
+	font-size: 25px;
+	margin: 0;
+}
+.funckeyBtn {
+	height: 100%;
+	margin: 0;
+	background-color: white;
+	width: 100px;
+	font-size: 20px;
+}
+#abcstartBtn {
+	float: left;
+	border-radius: 0 0 0 12px;
+}
+#abcrestartBtn {
+	float: right;
+	border-radius: 0 0 12px 0;
+}
+#abctimer {
+	font-size: 40px;
+	line-height: 70px;
+	text-align: center;
+}
+.gameself {
+	height: calc(100% - 140px);
+}
+#abcgame #abc_object1 {
+	position: absolute;
+	top: 756px;
+	left: 1166px;
+	width: 150px;
+	height: 150px;
+	background-color: red;
+	z-index: 200;
+}
+#abcgame #abc_object2 {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	background-color: white;
+	z-index: 200;
+}
+#randomlocscore {
+	font-size: 30px;
+	position: absolute;
+	color: white;
+	background-color: lightgoldenrodyellow;
+}
+
+
+
+
+
+
 
 
 
