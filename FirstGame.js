@@ -131,9 +131,6 @@ document.onkeydown = function(event) {
 	}
 	abcp2Obj.style.transition = "300ms";
 	abcp1Obj.style.transition = upspeed + "ms";
-	console.log(event.keyCode);
-	console.log(upspeed);
-	console.log(abcp1Obj.style.transition);
 	// 37 = left, 38 = top, 39 = right, 40 = bottom
 	var oldtop = abcp2Obj.style.top;
 	var oldleft = abcp2Obj.style.left;
@@ -201,16 +198,15 @@ function isCrash(p1,p2) {
 	var p2Dis = p2.getBoundingClientRect();
 
 	if(p1Dis.right < p2Dis.left || p1Dis.bottom < p2Dis.top || p1Dis.left > p2Dis.right || p1Dis.top > p2Dis.bottom) {
-		console.log("alive");
+		return 0;
 	} else {
-		gamestate = false;
-		scorestate = false;
+		return 1;
 	}
 }
 
 
 
-var time = 0, gamestate = true;
+var time = 0;
 var abcMinObj = document.getElementById("abcMin");
 var abcSecObj = document.getElementById("abcSec");
 var abcMsecObj = document.getElementById("abcMsec");
@@ -233,6 +229,7 @@ function abc_timestart() {
 		}
 		if(min == 3) {
 			clearInterval(abcTimer);
+			clearInterval(scoreTimer);
 			alert("Congratulations!");
 			time = 0;
 			abcp2Obj.style.top = 346 + reladis + "px";
@@ -241,13 +238,14 @@ function abc_timestart() {
 			abcp1Obj.style.left = "1166px";
 			abcMsecObj.innerHTML = abcSecObj.innerHTML = abcMinObj.innerHTML = "00";
 			abcp2Obj.style.transition = abcp1Obj.style.transition = "none";
-			speedshowObj.innerHTML = "Current Speed: Level 0";
+			speedshowObj.innerHTML = "Current Speed: 0/s";
 		}
 		speedshowObj.innerHTML = "Current Speed: Level " + (9 - (upspeed/1000));
 		isCrash(abcp1Obj,abcp2Obj);
-		if(gamestate == false) {
+		if(isCrash(abcp1Obj,abcp2Obj) == 1) {
 			alert("Game Over!");
 			clearInterval(abcTimer);
+			clearInterval(scoreTimer);
 			time = 0;
 			abcp1Obj.style.backgroundColor = "pink";
 			speedshowObj.innerHTML = "Current Speed: Level 0";
@@ -266,16 +264,15 @@ function abc_restart() {
 	clearInterval(abcTimer);
 	time = 0;
 	abcp1Obj.style.backgroundColor = "red";
-	abcp2Obj.style.top = 346 + reladis + "px";
+	abcp2Obj.style.top = "346px";
 	abcp2Obj.style.left = "436px";
 	abcp1Obj.style.top = 756 + reladis + "px";
 	abcp1Obj.style.left = "1166px";
 	abcMsecObj.innerHTML = abcSecObj.innerHTML = abcMinObj.innerHTML = "00";
 	abcp2Obj.style.transition = abcp1Obj.style.transition = "none";
 	speedshowObj.innerHTML = "Current Speed: Level 0";
-	gamestate = true;
 }
-var scorestate = true;
+var score = 0;
 function abc_start() {
 	var abcp2Obj = document.getElementById("abc_object2");
 	var abcp1Obj = document.getElementById("abc_object1");
@@ -283,27 +280,47 @@ function abc_start() {
 	abcp1Obj.style.top = 346 + reladis + "px";
 	abcp1Obj.style.left = "436px";
 	abcp1Obj.style.transition = "10s";
-	gamestate = true;
+	var locX = Math.floor(Math.random() * 820) + 1 + 436;
+	var locY = Math.floor(Math.random() * 460) + 1 + 346 + reladis;
+	var si = 0;
 	clearInterval(scoreTimer);
 	scoreTimer = setInterval(function() {
 		var scoreObj = document.getElementById("randomlocscore");
-		var locX = Math.floor(Math.random() * 560) + 1 + 346;
-		var locY = Math.floor(Math.random() * 700) + 1 + reladis;
-		var scorei;
+		var scoretextObj = document.getElementById("scoretext");
+		
+		scoreObj.style.display = "block";
+		scoreObj.style.top = locY + "px";
+		scoreObj.style.left = locX + "px";
 		isCrash(scoreObj, abcp2Obj);
-		if(scorestate == true) {
-			scoreObj.style.top = locY;
-			scoreObj.style.left = locX;
+		if(isCrash(scoreObj, abcp2Obj) == 1) {
+			scoreObj.style.display = "none";
+			locX = Math.floor(Math.random() * 820) + 1 + 436;
+			locY = Math.floor(Math.random() * 460) + 1 + 346 + reladis;
+			score += 100;
+			si = 0;
 		} else {
-			scorei++;
-			if(scorei > 1) {
-				scorei = 0;
-				scorestate = true;
+			si++;
+			if(si > 7) {
+				scoreObj.style.display = "none";
+				locX = Math.floor(Math.random() * 820) + 1 + 436;
+				locY = Math.floor(Math.random() * 460) + 1 + 346 + reladis;
+				si = 0;
 			}
 		}
-	}, 5000)
+		scoretextObj.innerHTML = "Score: " + partadd2(score);
+	}, 1000)
 }
-
+function partadd2(number) {
+	if(number == 0) {
+		return "000" + number;
+	} else if(number > 0 && number < 100) {
+		return "00" + number;
+	} else if(number >= 100 && number < 1000){
+		return "0" + number;
+	} else {
+		return number;
+	}
+}
 
 
 
