@@ -104,7 +104,7 @@ a {
 	display: none;
 }
 #blankarea {
-	padding: 450px;
+	padding: 475px;
 }
 
 .TBbutton {
@@ -341,7 +341,9 @@ a {
 	float: right;
 	background-color: inherit;
 }
-
+#comesoon {
+	height: 210px;
+}
 
 
 

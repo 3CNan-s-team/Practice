@@ -372,6 +372,7 @@ var Dtimer, Dstatus = true;
 var startaudioObj = document.getElementById("startaudio");
 var stopaudioObj = document.getElementById("stopaudio");
 var lotteryBox2Objs = document.getElementsByClassName("lotteryBox2");
+var text0Obj = document.getElementById("text0");
 Di = 0, Dn = 0;
 
 function drawlot() {
@@ -411,7 +412,7 @@ function lotrandom() {
 		Dstatus = true;
 		Di = Di%8;
 		Dn = Di;
-		text0.innerHTML = "Congratulations, you get " + lotteryBox2Objs[0].title + "！";
+		text0Obj.innerHTML = "Congratulations, you get " + lotteryBox2Objs[0].title + "！";
 		scorecombine += parseInt(lotteryBox2Objs[0].title);
 		scoretextObj2.innerHTML = "All your scores: " + partadd3(scorecombine);
 	} 
@@ -487,6 +488,9 @@ function turnstopping() {
 		}
 		turnplateObj.style.transform = "rotate(" + degree + "deg)";
 		turnplateObj.style.transition = n + "s";
+		var price = parseInt(degree/36);
+		var array = ["Second","First","Tenth","Ninth","Eighth","Seventh","Sixth","Fifth","Fourth","Third"];
+		text0Obj.innerHTML = "Congratulations, you get " + array[price] + " price！";
 		cancelAnimationFrame(TRtimer2);
 	}
 }
