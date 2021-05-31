@@ -7,11 +7,11 @@
 	
 </head>
 <body onscroll="show();lengthen()">
-	<h1><a href="#">First-Game</a></h1>
+	<h1><a href="#">First-Game </a> <p id="titledes"> Play simple game like your childhood memories.</p></h1>
 	<div id="menu">
 		<a href="#">My Games</a>
 		<p>|</p>
-		<a href="http://www.4399.com">Other games</a>
+		<a href="http://www.4399.com">Other Game Website</a>
 		<form method="GET" target="_blank" id="search" action="http://www.google.com/search">
 			<select id="searchOps" onchange="searchchange()">
 				<option>Google</option>
@@ -30,13 +30,9 @@
 	</div>
 	<div id="content">
 		<div id="gamelist">
-			<p>Avoid Being Caught</p>
-			<p>Five in a Row</p>
-			<p>Lottery machine</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
+			<p class="gamename">Avoid Being Caught</p>
+			<p class="gamename">Lottery machine</p>
+			<p class="gamename">Other Games</p>
 		</div>
 		<div class="gamearea">
 			<div class="gamedesciption">
@@ -44,7 +40,7 @@
 					Desciption of Avoid Bloody Mouth
 					<button class="expandBtn" onclick="descriptionopen()">Show details</button>
 				</p>
-				<p class="desdetails">The big bloody mouth wants to eat you, please use <span id="udlrImg"></span> to escape death!</p>
+				<p class="desdetails">This game is about a chase between white cube and red cube. When red cube meet white cube, the game is over. Go through <span id="text1">+100</span> to get score. Tapping the keyboard rapidly can increase your speed. Use <span id="udlrImg"></span> to escape death from the dangerous red cube!</p>
 			</div>
 			<div class="gamescreen">
 				<div class="taskbar1">
@@ -58,7 +54,7 @@
 				</div>
 				<div class="taskbar2">
 					<button id="abcstartBtn" class="funckeyBtn" onclick="abc_timestart(); abc_start()">Start</button>
-					<button id="abcrestartBtn" class="funckeyBtn" onclick="abc_restart()">Reset</button>
+					<button id="abcresetBtn" class="funckeyBtn" onclick="abc_reset()">Reset</button>
 					<div id="abctimer">
 						<span id="abcMin">00</span>
 						<span>:</span>
@@ -69,7 +65,75 @@
 				</div>
 			</div>
 		</div>
+
+
+		<div class="gamearea">
+			<div class="gamedesciption"></div>
+			<div class="gamescreen">
+				<div class="taskbar1">
+					<p id="scoretext2">All your scores: 00000</p>
+				</div>
+
+				<div id="lmgame" class="gameself">
+					<div id="lotteryArea">
+						<div id="lotteryBoxArea">
+							<div class="lotteryBox" name="lotteryBoxs" title="500 scores">
+								<p>Score-500</p>
+							</div>
+							<div class="lotteryBox" name="lotteryBoxs" title="1000 scores">
+								<p>Score-1000</p>
+							</div>
+							<div class="lotteryBox" name="lotteryBoxs" title="1500 scores">
+								<p>Score-1500</p>
+							</div>
+							<div class="lotteryBox" name="lotteryBoxs" title="1000 scores">
+								<p>Score-1000</p>
+							</div>
+							<div id="lotteryBoxM">
+								<button id="lotteryMBtn" onclick="drawlot()">Draw Lottery</button>
+							</div>
+							<div class="lotteryBox" name="lotteryBoxs" title="2000 scores">
+								<p>Score-2000</p>
+							</div>
+							<div class="lotteryBox" name="lotteryBoxs" title="500 scores">
+								<p>Score-500</p>
+							</div>
+							<div class="lotteryBox" name="lotteryBoxs" title="1000 scores">
+								<p>Score-1000</p>
+							</div>
+							<div class="lotteryBox" name="lotteryBoxs" title="1500 scores">
+								<p>Score-1500</p>
+							</div>
+						</div>
+						<audio src="start.mp3" id="startaudio" loop="loop">Your browser does not support the audio element.</audio>
+						<audio src="stop.mp3" id="stopaudio">Your browser does not support the audio element.</audio>
+					
+						<div id="turnplatearea">
+							<div id="turnplate"></div>
+							<p id="turnarrow">↑</p>
+						</div>
+						<button id="turnplateBtn" onclick="turnround()">Run</button>
+					</div>
+					<p id="text0">Congratulations!</p>
+				</div>
+
+				<div class="taskbar2"></div>
+			</div>
+		</div>
+
+
+		<div class="gamearea">
+			<div class="gamedesciption"></div>
+			<div class="gamescreen">
+				<div class="taskbar1"></div>
+				<div id="fiargame" class="gameself">
+					<h2>Coming Soon......</h2>
+				</div>
+				<div class="taskbar2"></div>
+			</div>
+		</div>
 	</div>
+
 	<div id="blankarea"></div>
 	<script type="text/javascript" src="./FirstGame.js"></script>
 </body>

@@ -101,7 +101,7 @@ function descriptionopen() {
 			desciptionObjs[i].style.borderRadius = "12px 12px 0 0";
 			expendBtnObjs[i].style.borderRadius = "0 12px 0 0";
 		}
-		reladis = 60;
+		reladis = 110;
 		abcp1Obj.style.transition = "none";
 		abcp2Obj.style.transition = "none";
 		dostatus = false;
@@ -206,7 +206,7 @@ function isCrash(p1,p2) {
 
 
 
-var time = 0;
+var time = 0, scorecombine = 0;
 var abcMinObj = document.getElementById("abcMin");
 var abcSecObj = document.getElementById("abcSec");
 var abcMsecObj = document.getElementById("abcMsec");
@@ -214,6 +214,16 @@ var speedshowObj = document.getElementById("speedtext");
 function abc_timestart() {
 	clearInterval(abcTimer);
 	abcTimer = setInterval(function() {
+		if(isCrash(abcp1Obj,abcp2Obj) == 1) {
+			alert("Game Over!");
+			clearInterval(abcTimer);
+			clearInterval(scoreTimer);
+			time = 0;
+			abcp1Obj.style.backgroundColor = "pink";
+			speedshowObj.innerHTML = "Current Speed: Level 0";
+
+			return;
+		}
 		time++;
 		var ms = partadd(time%60);
 		var sec = partadd(parseInt((time/60)%60));
@@ -228,28 +238,11 @@ function abc_timestart() {
 			upspeed = 1000;
 		}
 		if(min == 3) {
-			clearInterval(abcTimer);
 			clearInterval(scoreTimer);
+			abc_reset();
 			alert("Congratulations!");
-			time = 0;
-			abcp2Obj.style.top = 346 + reladis + "px";
-			abcp2Obj.style.left = "436px";
-			abcp1Obj.style.top = 756 + reladis + "px";
-			abcp1Obj.style.left = "1166px";
-			abcMsecObj.innerHTML = abcSecObj.innerHTML = abcMinObj.innerHTML = "00";
-			abcp2Obj.style.transition = abcp1Obj.style.transition = "none";
-			speedshowObj.innerHTML = "Current Speed: 0/s";
 		}
 		speedshowObj.innerHTML = "Current Speed: Level " + (9 - (upspeed/1000));
-		isCrash(abcp1Obj,abcp2Obj);
-		if(isCrash(abcp1Obj,abcp2Obj) == 1) {
-			alert("Game Over!");
-			clearInterval(abcTimer);
-			clearInterval(scoreTimer);
-			time = 0;
-			abcp1Obj.style.backgroundColor = "pink";
-			speedshowObj.innerHTML = "Current Speed: Level 0";
-		}
 	}, 16.5);
 }
 var abcTimer, scoreTimer;
@@ -260,19 +253,26 @@ function partadd(number) {
 	return number;
 }
 
-function abc_restart() {
+function abc_reset() {
 	clearInterval(abcTimer);
 	time = 0;
 	abcp1Obj.style.backgroundColor = "red";
-	abcp2Obj.style.top = "346px";
+	abcp2Obj.style.top = 346 + reladis + "px";
 	abcp2Obj.style.left = "436px";
 	abcp1Obj.style.top = 756 + reladis + "px";
 	abcp1Obj.style.left = "1166px";
 	abcMsecObj.innerHTML = abcSecObj.innerHTML = abcMinObj.innerHTML = "00";
 	abcp2Obj.style.transition = abcp1Obj.style.transition = "none";
 	speedshowObj.innerHTML = "Current Speed: Level 0";
+	upspeed = 8000;
+	score = 0;
+	scoreObj.style.display = "none";
+	scoretextObj.innerHTML = "Score: 0000";
 }
 var score = 0;
+var scoretextObj = document.getElementById("scoretext");
+var scoreObj = document.getElementById("randomlocscore");
+
 function abc_start() {
 	var abcp2Obj = document.getElementById("abc_object2");
 	var abcp1Obj = document.getElementById("abc_object1");
@@ -285,8 +285,6 @@ function abc_start() {
 	var si = 0;
 	clearInterval(scoreTimer);
 	scoreTimer = setInterval(function() {
-		var scoreObj = document.getElementById("randomlocscore");
-		var scoretextObj = document.getElementById("scoretext");
 		
 		scoreObj.style.display = "block";
 		scoreObj.style.top = locY + "px";
@@ -297,6 +295,7 @@ function abc_start() {
 			locX = Math.floor(Math.random() * 820) + 1 + 436;
 			locY = Math.floor(Math.random() * 460) + 1 + 346 + reladis;
 			score += 100;
+			scorecombine += 100;
 			si = 0;
 		} else {
 			si++;
@@ -323,18 +322,174 @@ function partadd2(number) {
 }
 
 
+var gamenameObjs = document.getElementsByClassName("gamename");
+var gameareaObjs = document.getElementsByClassName("gamearea");
+var scoretextObj2 = document.getElementById("scoretext2");
+
+gamenameObjs[0].onclick = function abcappear() {
+	for(var i = 0; i < gameareaObjs.length; i++) {
+		gameareaObjs[i].style.display = "none";
+	}
+	gameareaObjs[0].style.display = "block";
+}
+gamenameObjs[1].onclick = function() {
+	for(var i = 0; i < gameareaObjs.length; i++) {
+		gameareaObjs[i].style.display = "none";
+	}
+	gameareaObjs[1].style.display = "block";
+	scoretextObj2.innerHTML = "All your scores: " + partadd3(scorecombine);
+}
+gamenameObjs[2].onclick = function() {
+	for(var i = 0; i < gameareaObjs.length; i++) {
+		gameareaObjs[i].style.display = "none";
+	}
+	gameareaObjs[2].style.display = "block";
+}
+
+window.onload = function() {
+	gameareaObjs[0].style.display = "block";
+}
 
 
 
 
+function partadd3(number) {
+	if(number == 0) {
+		return "0000" + number;
+	} else if(number > 0 && number < 100) {
+		return "000" + number;
+	} else if(number >= 100 && number < 1000){
+		return "00" + number;
+	} else if(number >= 1000 && number < 10000) {
+		return "0" + number;
+	} else {
+		return number;
+	}
+}
+
+
+var Dtimer, Dstatus = true;
+var startaudioObj = document.getElementById("startaudio");
+var stopaudioObj = document.getElementById("stopaudio");
+var lotteryBox2Objs = document.getElementsByClassName("lotteryBox2");
+Di = 0, Dn = 0;
+
+function drawlot() {
+	clearInterval(Dtimer);
+	stopaudioObj.pause()
+	startaudioObj.play();
+	Dtimer = setInterval(lotrandom, 170);
+	Dstatus = false;
+}
+function lotrandom() {
+	var lotteryBoxsObjs = document.getElementsByName("lotteryBoxs");
+	var round = Math.round(Math.random()*5 + 17) + Dn;
+	for(var i = 0; i < lotteryBoxsObjs.length; i++) {
+		lotteryBoxsObjs[i].className = "lotteryBox";
+	}
+	if(Di%8 < 3) {
+		lotteryBoxsObjs[Di%8].className = "lotteryBox2";
+	} else if(Di%8 == 3) {
+		lotteryBoxsObjs[4].className = "lotteryBox2";
+	} else if(Di%8 > 3 && Di%8 < 7) {
+		switch(Di%8) {
+			case 4:
+				lotteryBoxsObjs[7].className = "lotteryBox2"; break;
+			case 5:
+				lotteryBoxsObjs[6].className = "lotteryBox2"; break;
+			case 6:
+				lotteryBoxsObjs[5].className = "lotteryBox2"; break;
+		}
+	} else if(Di%8 == 7) {
+		lotteryBoxsObjs[3].className = "lotteryBox2";
+	}
+	Di++;
+	if(Di > round) {
+		startaudioObj.pause();
+		stopaudioObj.play();
+		clearInterval(Dtimer);
+		Dstatus = true;
+		Di = Di%8;
+		Dn = Di;
+		text0.innerHTML = "Congratulations, you get " + lotteryBox2Objs[0].title + "！";
+		scorecombine += parseInt(lotteryBox2Objs[0].title);
+		scoretextObj2.innerHTML = "All your scores: " + partadd3(scorecombine);
+	} 
+}
 
 
 
 
+var TRtimer, TRtimer2, TRstatus = true, degree = 360, degcount = 7, degi = 0, degii = 0, dtime = 0, speedrandom;
+var turnplateObj = document.getElementById("turnplate");
+function turnround() {
+		cancelAnimationFrame(TRtimer);
+		TRtimer = requestAnimationFrame(turnrunning);
+		TRstatus = false;
+		speedrandom = Math.floor(Math.random() * 181) + 180;
+}
+function turnrunning() {
+	degcount = 7;
+	degi = 0;
+	degii = 0;
 
+	degree -= degcount;
+	turnplateObj.style.transform = "rotate(" + degree + "deg)";
+	turnplateObj.style.transition = "none";
 
+	if(TRstatus == false) {
+		TRtimer = requestAnimationFrame(turnrunning);
+	}
+	if(degree <= 0 ) {
+		degree = 360;
+	}
+	if(Math.abs(degree - speedrandom) <= degcount) {
+		dtime++;
+	}
+	if(dtime == 2) {
+		dtime = 0;
+		cancelAnimationFrame(TRtimer);
+		cancelAnimationFrame(TRtimer2);
+		TRtimer2 = requestAnimationFrame(turnstopping);
+		TRstatus = true;
+	}
+}
+function turnstopping() {
+	var n, speed = 20;
+	if(degree <= 0 ) {
+		degree = 360;
+	}
+	degree -= degcount;
+	turnplateObj.style.transform = "rotate(" + degree + "deg)";
+	if(TRstatus == true) {
+		TRtimer2 = requestAnimationFrame(turnstopping);
+	}
+	if(degi > speed) {
+		degcount -= 1;
+		degi = 0;
+	}
+	if(degii > 4) {speed = Math.floor(Math.random() * 21) + 30;}
+	else if(degii > 6) {speed = Math.floor(Math.random() * 41) + 50;}
+	else {degii++;}
 
+	degi++;
+	var compare = Math.abs(degree%36 - 18);
+	if (degcount < 0) {
+		if(compare >= 12) {n = 6;}
+		else if(compare >= 8 && compare < 12) {n = 4;}
+		else if(compare >= 4 && compare < 8) {n = 2;}
+		else if(compare >= 0 && compare < 4) {n = 1;}
 
+		if(degree%36 < 18) {
+			degree += 18 - degree%36;
+		} else if (degree%36 > 18) {
+			degree -= degree%36 - 18;
+		}
+		turnplateObj.style.transform = "rotate(" + degree + "deg)";
+		turnplateObj.style.transition = n + "s";
+		cancelAnimationFrame(TRtimer2);
+	}
+}
 
 
 
